@@ -1,48 +1,41 @@
-import {CfnOutput,Construct} from '@aws-cdk/core';
-import {CfnUserPoolResourceServer, OAuthScope,UserPool,UserPoolClient, UserPoolDomain} from '@aws-cdk/aws-cognito';
+import {CfnOutput, Construct} from '@aws-cdk/core';
+import {CfnUserPoolResourceServer, OAuthScope, UserPool, UserPoolClient, UserPoolDomain} from "@aws-cdk/aws-cognito";
 
+export class CognitoConstruct extends Construct {
+    public static readonly USER_POOL_ID = 'UserManagerUserPool';
+    public static readonly USER_POOL_CLIENT_ID = 'user-manager-client';
+    public static readonly USER_POOL_DOMAIN_ID = 'user-manager-user-pool-domain';
+    public static readonly USER_POOL_RESOURCE_SERVER_ID = 'https://resource-server.com';
+    public readonly userPoolArn: string;
 
-export class CloudCognitoConstruct extends Construct{
-    public static readonly CLOUD_USER_POOL_ID = 'CloudStackCDK';
-    public static readonly CLOUD_USER_POOL_CLIENT_ID = 'CloudStackCDK-client';
-    public static readonly CLOUD_USER_POOL_DOMAIN_ID = 'CloudStackCDK-user-pool-domain';
-    public static readonly CLOUD_USER_POOL_RESOURCE_ID = 'https://resource-server.com';
-    public readonly userPoolArn:String;
-    
+    constructor(scope: Construct) {
+        super(scope, CognitoConstruct.USER_POOL_ID);
+        const cognitoUserPool = new UserPool(this, CognitoConstruct.USER_POOL_ID, {})
 
-    constructor(scope:Construct){
-        //---------------User pool with Cognito-------------------
-        super(scope,CloudCognitoConstruct.CLOUD_USER_POOL_ID);
-        const cognitoUserPool = new UserPool(this,CloudCognitoConstruct.CLOUD_USER_POOL_ID,{})
-
-        //- ----------- User pool resorce allocation-------------
-
-        new CfnUserPoolResourceServer(this,'cdk-userpool-dev-server',
-        {
-            identifier: CloudCognitoConstruct.CLOUD_USER_POOL_RESOURCE_ID,
+        new CfnUserPoolResourceServer(this, "dev-userpool-resource-server", {
+            identifier: CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID,
             name: "userpool-resource-server",
             userPoolId: cognitoUserPool.userPoolId,
             scopes: [
                 {
-                    scopeDescription: "CDK client opeartion operations",
-                    scopeName: CloudCognitoConstruct.CLOUD_USER_POOL_CLIENT_ID
+                    scopeDescription: "Perform client operations",
+                    scopeName: "user-manager-client",
                 },
             ],
-        })
+        });
 
-
-        new UserPoolClient(this, CloudCognitoConstruct.CLOUD_USER_POOL_ID, {
+        new UserPoolClient(this, CognitoConstruct.USER_POOL_CLIENT_ID, {
             userPool: cognitoUserPool,
             generateSecret: true,
             oAuth: {
                 flows: {
                     clientCredentials: true
                 },
-                scopes: [OAuthScope.custom(`${CloudCognitoConstruct.CLOUD_USER_POOL_RESOURCE_ID}/user-manager-client`)],
+                scopes: [OAuthScope.custom(`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/user-manager-client`)],
             },
         })
 
-        const userPoolDomain = new UserPoolDomain(this, CloudCognitoConstruct.CLOUD_USER_POOL_DOMAIN_ID, {
+        const userPoolDomain = new UserPoolDomain(this, CognitoConstruct.USER_POOL_DOMAIN_ID, {
             userPool: cognitoUserPool,
             cognitoDomain: {
                 domainPrefix: 'user-manager-serverless'
@@ -53,11 +46,7 @@ export class CloudCognitoConstruct extends Construct{
 
         new CfnOutput(this, 'UserPoolUrl', {
             exportName: `UserPoolUrl`,
-            value: `https://${userPoolDomain.domainName}.auth.us-east-1.amazoncognito.com`
+            value: `https://${userPoolDomain.domainName}.auth.us-east-2.amazoncognito.com`
         });
     }
-
-
-
-
 }

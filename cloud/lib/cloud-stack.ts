@@ -1,6 +1,9 @@
 import * as cdk from '@aws-cdk/core'
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
-import {CloudCognitoConstruct} from "./cloud-cognito/CloudCognitoConstruct";
+import {CognitoConstruct} from "./cloud-cognito/CloudCognitoConstruct";
+import {CloudApiGatewayConstruct} from "./CloudApiGateway/CloudApiGatewayConstruct";
+import {UsersDynamoDbTable} from "./cloud-Dynamodb/UsersDynamoDbTable";
+import {CloudLambdaConstruct} from "./cloud-Lamdas/CloudLambdaConstruct";
 
 export class CloudStack extends cdk.Stack {
 
@@ -10,14 +13,16 @@ export class CloudStack extends cdk.Stack {
     super(scope, id,{ 
       ...props,
       env:{
-          account:process.env.CDK_DEFAULT_ACCOUNT,
-          region:process.env.CDK_DEFAULT_REGION
+          account:'853595480311',//process.env.CDK_DEFAULT_ACCOUNT,
+          region:'us-west-2'//process.env.CDK_DEFAULT_REGION
       }
     });
 
 
-    const cloudCognitoConstruct = new CloudCognitoConstruct(this)
-    new ApiGatewayConstruct(this, cloudCognitoConstruct.userPoolArn, lambdaConstruct);
+    const cloudCognitoConstruct = new CognitoConstruct(this)
+    const usersDynamoDbTable = new UsersDynamoDbTable(this);
+    const lambdaConstruct = new CloudLambdaConstruct(this, usersDynamoDbTable);
+    new CloudApiGatewayConstruct(this, cloudCognitoConstruct.userPoolArn, lambdaConstruct);
     
   }
 }

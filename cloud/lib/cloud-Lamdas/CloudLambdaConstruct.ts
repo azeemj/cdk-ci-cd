@@ -6,7 +6,7 @@ import {NodeModulesLayer} from "./NodeModulesLayer";
 import {GetUsersLambda} from './GetUsersLambda';
 
 
-export class LamdaConstruct extends Construct {
+export class CloudLambdaConstruct extends Construct {
 
     public static readonly ID = 'LamdaConstruct';
 
@@ -14,7 +14,7 @@ export class LamdaConstruct extends Construct {
     public readonly getUsersLambda: IFunction;
 
     constructor(scope:Construct, usersDynamoDbTable: Table){
-        super(scope,LamdaConstruct.ID);
+        super(scope,CloudLambdaConstruct.ID);
         const nodeJSModulesLayer = new NodeModulesLayer(this);
 
         this.createUserLambda = new CreateUserLambda(this,usersDynamoDbTable.tableName,nodeJSModulesLayer);
