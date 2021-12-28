@@ -1,6 +1,6 @@
 import * as cdk from '@aws-cdk/core'
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
-import {} from "./cloud-cognito";
+import {CloudCognitoConstruct} from "./cloud-cognito/CloudCognitoConstruct";
 
 export class CloudStack extends cdk.Stack {
 
@@ -15,6 +15,9 @@ export class CloudStack extends cdk.Stack {
       }
     });
 
+
+    const cloudCognitoConstruct = new CloudCognitoConstruct(this)
+    new ApiGatewayConstruct(this, cloudCognitoConstruct.userPoolArn, lambdaConstruct);
     
   }
 }
