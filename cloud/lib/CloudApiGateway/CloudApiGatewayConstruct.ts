@@ -6,40 +6,37 @@ import { Construct } from '@aws-cdk/core';
 
 
 export class CloudApiGatewayConstruct extends Construct{
-    public static readonly ID = 'CDKUserManagerApiGateway';
+    public static readonly ID = 'UserManagerApiGateway';
 
-// ---------------defining API gateway-------------//
-    constructor(scope:Construct,CognitoUsrPoolArn:string,lamdas:CloudLambdaConstruct){
+    constructor(scope: Construct, cognitoUserPoolArn: string, lambdas: CloudLambdaConstruct) {
         super(scope, CloudApiGatewayConstruct.ID);
-        const restApi = new RestApi(this, CloudApiGatewayConstruct.ID,{
-            restApiName:'IIT Rest API manager'
-        });
-
-
-        const authorier = new CfnAuthorizer(this, 'cfnAuth',
-        {
-            restApiId:restApi.restApiId,
-            name:'UserManagerApiAuthorizer',
-            type:'COGNIO_USER_POOLS',
-            identitySource:'method.request.header.Authorization',
-            providerArns:[CognitoUsrPoolArn],
-  
+        const restApi = new RestApi(this, CloudApiGatewayConstruct.ID, {
+            restApiName: 'User Manager API'
         })
 
+        const authorizer = new CfnAuthorizer(this, 'cfnAuth', {
+            restApiId: restApi.restApiId,
+            name: 'UserManagerApiAuthorizer',
+            type: 'COGNITO_USER_POOLS',
+            identitySource: 'method.request.header.Authorization',
+            providerArns: [cognitoUserPoolArn],
+        })
 
-        const authorizationParam = {
+        const authorizationParams = {
             authorizationType: AuthorizationType.COGNITO,
             authorizer: {
-                authorizerId: authorier.ref
+                authorizerId: authorizer.ref
             },
             authorizationScopes: [`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/user-manager-client`]
         };
 
 
+
+
         // -----------------Lmada integration-----------------------
         const userResource = restApi.root.addResource('users');
-        userResource.addMethod('POST', new LambdaIntegration(lamdas.createUserLambda), authorizationParam);
-        userResource.addMethod('GET', new LambdaIntegration(lamdas.getUsersLambda), authorizationParam);
+        userResource.addMethod('POST', new LambdaIntegration(lambdas.createUserLambda), authorizationParams);
+        userResource.addMethod('GET', new LambdaIntegration(lambdas.getUsersLambda), authorizationParams);
     }
 
    
