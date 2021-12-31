@@ -18,6 +18,7 @@ export class CloudStack extends cdk.Stack {
       }
     });
 
+    
 
     const cloudCognitoConstruct = new CognitoConstruct(this)
     const usersDynamoDbTable = new UsersDynamoDbTable(this);
