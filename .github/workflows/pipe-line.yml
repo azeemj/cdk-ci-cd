@@ -47,7 +47,8 @@ jobs:
         
     - name: Deploy CDK
       run: |
-        cdk deploy --app ./cloud/cdk.out --require-approval never "*"
+        cd ./cloud
+        cdk deploy
       if: github.ref == 'refs/heads/main'
       env:
         AWS_REGION: us-west-2
