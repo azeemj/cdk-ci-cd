@@ -4,23 +4,55 @@ on: [push]
 
 jobs:
   aws-cdk-synth:
-
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: npm-run-build
-      run:  cd ./cloud &&  npm install && npm run build
-      
-    - name: CDK Synth
-      uses: scottbrenner/aws-cdk-action@master
-      
+    - name: Use Node.js
+      uses: actions/setup-node@v1
       with:
-        args: build --app ./cdk.out --require-approval never "*"
-        working_dir: ./cloud
+        node-version: '14.x'
         
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+          
+    - name: Install CDK
+      run: |
+        npm install -g aws-cdk@1.62.0
+        
+    - name: Set up JDK 1.11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
+    - name: Cache Gradle packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+        restore-keys: ${{ runner.os }}-gradle
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Build Stack
+      run: |
+        cd ./cloud
+        npm install
+        npm run build
+        
+    - name: Deploy CDK
+      run: |
+        cdk deploy --app ./cloud/cdk.out --require-approval never "*"
+      if: github.ref == 'refs/heads/master'
       env:
+        AWS_REGION: us-west-2
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
