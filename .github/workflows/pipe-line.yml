@@ -10,9 +10,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
+      
+    - name: npm-run-build
+      run:  cd ./cloud &&  npm install && npm run build
+      
     - name: CDK Synth
       uses: scottbrenner/aws-cdk-action@master
+      
       with:
         args: deploy
         working_dir: ./cloud
