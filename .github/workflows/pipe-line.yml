@@ -14,7 +14,7 @@ jobs:
     - name: CDK Synth
       uses: scottbrenner/aws-cdk-action@master
       with:
-        args: synth
+        args: deploy
         working_dir: ./cloud
         
       env:
