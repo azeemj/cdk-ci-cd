@@ -27,12 +27,14 @@
     "@aws-cdk/aws-ecr-assets:dockerIgnoreSupport": true,
     "@aws-cdk/core:newStyleStackSynthesis": true,
 
-    "dev":{
-
-    },
-
-    "prod":{
-      
-    }
+    "dev": {
+      "dbUsername": "devUser"
+  },
+  "staging": {
+      "dbUsername": "stagingUser"
+  },
+  "prod": {
+      "dbUsername": "prodUser"
+  }
   }
 }

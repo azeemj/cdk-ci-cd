@@ -5,17 +5,16 @@ import {CloudApiGatewayConstruct} from "./CloudApiGateway/CloudApiGatewayConstru
 import {UsersDynamoDbTable} from "./cloud-Dynamodb/UsersDynamoDbTable";
 import {CloudLambdaConstruct} from "./cloud-Lamdas/CloudLambdaConstruct";
 
-export class CloudStack extends cdk.Stack {
+export class CloudStackStage extends cdk.Stack {
 
     private static readonly API_ID = 'CloudApi'
 
   constructor(scope:cdk.Construct, id: string, props?: cdk.StackProps) {
-    console.log('test',props);
     super(scope, id,{ 
       ...props,
       env:{
           account:process.env.CDK_DEFAULT_ACCOUNT,
-          region:props?.env?.region
+          region:process.env.CDK_DEFAULT_REGION
       }
     });
 

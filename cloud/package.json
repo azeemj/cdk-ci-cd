@@ -11,7 +11,7 @@
     "cdk": "cdk",
     "clean": "rm -rf ./cdk.out",
     "synth": "cdk synth --app \"npx ts-node ./bin/user-manager-serverless.ts\"",
-    "deploy": "npm run synth && cdk deploy --app ./cdk.out/ --require-approval=never",
+    "deploy": "npm run synth && cdk deploy --app ./cdk.out/ --require-approval=never --all",
     "buildAndDeploy": "npm run build && npm run synth && cdk deploy --app ./cdk.out/ --require-approval=never",
     "copyDependencies": "copy-node-modules . node_modules_layer/nodejs/"
   },
