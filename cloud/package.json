@@ -5,7 +5,7 @@
     "cloud": "bin/cloud.js"
   },
   "scripts": {
-    "build": "tsc && npm run copyDependencies",
+    "build": "rm -rf ./js/ && tsc && npm run copyDependencies",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",

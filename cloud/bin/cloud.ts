@@ -2,7 +2,7 @@
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { CloudStack } from '../lib/cloud-stack';
-import { CloudStackStage } from '../lib/cloud-stack-stage';
+// import { CloudStackStage } from '../lib/cloud-stack-stage';
 
 const app = new cdk.App();
 

@@ -11,7 +11,7 @@ export class CreateProductLambda extends Function {
         super(scope, CreateProductLambda.ID, {
             ...defaultFunctionProps,
             code: Code.fromAsset(resolve(__dirname, `../../lambdas`)),
-            handler: 'handlers/CreateUserHandler.handler',
+            handler: 'handlers/CreateProductrHandler.handler',
             layers: [layer],
             role: new Role(scope, `${CreateProductLambda.ID}_role`, {
                 assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
