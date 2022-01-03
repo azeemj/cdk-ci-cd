@@ -2,7 +2,7 @@ import * as cdk from '@aws-cdk/core'
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 import {CognitoConstruct} from "./cloud-cognito/CloudCognitoConstruct";
 import {CloudApiGatewayConstruct} from "./CloudApiGateway/CloudApiGatewayConstruct";
-import {UsersDynamoDbTable} from "./cloud-Dynamodb/UsersDynamoDbTable";
+import {productsDynamoDbTable} from "./cloud-Dynamodb/productsDynamoDbTable";
 import {CloudLambdaConstruct} from "./cloud-Lamdas/CloudLambdaConstruct";
 
 export class CloudStack extends cdk.Stack {
@@ -22,8 +22,8 @@ export class CloudStack extends cdk.Stack {
     
 
     const cloudCognitoConstruct = new CognitoConstruct(this)
-    const usersDynamoDbTable = new UsersDynamoDbTable(this);
-    const lambdaConstruct = new CloudLambdaConstruct(this, usersDynamoDbTable);
+    const productDynamoDbTable = new productsDynamoDbTable(this);
+    const lambdaConstruct = new CloudLambdaConstruct(this, productDynamoDbTable);
     new CloudApiGatewayConstruct(this, cloudCognitoConstruct.userPoolArn, lambdaConstruct);
     
   }

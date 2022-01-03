@@ -4,23 +4,23 @@ import {Code, Function, LayerVersion} from '@aws-cdk/aws-lambda';
 import {defaultFunctionProps} from './DefaultFunctionProps';
 import {resolve} from "path";
 
-export class CreateUserLambda extends Function {
+export class CreateProductLambda extends Function {
     public static readonly ID = 'CreateUserLambda';
 
-    constructor(scope: Construct, usersTableName: string, layer: LayerVersion) {
-        super(scope, CreateUserLambda.ID, {
+    constructor(scope: Construct, productTableName: string, layer: LayerVersion) {
+        super(scope, CreateProductLambda.ID, {
             ...defaultFunctionProps,
             code: Code.fromAsset(resolve(__dirname, `../../lambdas`)),
             handler: 'handlers/CreateUserHandler.handler',
             layers: [layer],
-            role: new Role(scope, `${CreateUserLambda.ID}_role`, {
+            role: new Role(scope, `${CreateProductLambda.ID}_role`, {
                 assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
                 managedPolicies: [
                     ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
                 ]
             }),
             environment: {
-                USERS_TABLE: usersTableName
+                USERS_TABLE: productTableName
             }
         });
     }

@@ -1,16 +1,16 @@
 import {Aws, Construct, RemovalPolicy} from '@aws-cdk/core';
 import {Attribute, AttributeType, Table} from '@aws-cdk/aws-dynamodb';
 
-export class UsersDynamoDbTable extends Table {
+export class productsDynamoDbTable extends Table {
 
-    public static readonly TABLE_ID = 'Users';
+    public static readonly TABLE_ID = 'Products';
     public static readonly PARTITION_KEY = 'id';
 
     constructor(scope: Construct) {
-        super(scope, UsersDynamoDbTable.TABLE_ID, {
-            tableName: `${Aws.STACK_NAME}-Users`,
+        super(scope, productsDynamoDbTable.TABLE_ID, {
+            tableName: `${Aws.STACK_NAME}-Products`,
             partitionKey: {
-                name: UsersDynamoDbTable.PARTITION_KEY,
+                name: productsDynamoDbTable.PARTITION_KEY,
                 type: AttributeType.STRING
             } as Attribute,
             removalPolicy: RemovalPolicy.DESTROY,
@@ -18,4 +18,4 @@ export class UsersDynamoDbTable extends Table {
     }
 }
 
-// export default UsersDynamoDbTable;
+// export default productsDynamoDbTable;
