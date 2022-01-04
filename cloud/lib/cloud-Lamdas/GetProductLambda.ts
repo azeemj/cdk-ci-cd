@@ -5,13 +5,13 @@ import {defaultFunctionProps} from './DefaultFunctionProps';
 import {resolve} from "path";
 
 export class GetProductLambda extends Function {
-    public static readonly ID = 'GetUsersLambda';
+    public static readonly ID = 'GetProductsLambda';
 
     constructor(scope: Construct, usersTableName: string,layer: LayerVersion) {
         super(scope, GetProductLambda.ID, {
             ...defaultFunctionProps,
             code: Code.fromAsset(resolve(__dirname, `../../lambdas`)),
-            handler: 'handlers/GetUsersHandler.handler',
+            handler: 'handlers/GetProductsHandler.handler',
             layers: [layer],
             role: new Role(scope, `${GetProductLambda.ID}_role`, {
                 assumedBy: new ServicePrincipal('lambda.amazonaws.com'),

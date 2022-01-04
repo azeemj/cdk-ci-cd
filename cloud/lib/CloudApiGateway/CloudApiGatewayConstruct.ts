@@ -6,12 +6,12 @@ import { Construct } from '@aws-cdk/core';
 
 
 export class CloudApiGatewayConstruct extends Construct{
-    public static readonly ID = 'UserManagerApiGateway';
+    public static readonly ID = 'ProductManagerApiGateway';
 
     constructor(scope: Construct, cognitoUserPoolArn: string, lambdas: CloudLambdaConstruct) {
         super(scope, CloudApiGatewayConstruct.ID);
         const restApi = new RestApi(this, CloudApiGatewayConstruct.ID, {
-            restApiName: 'User Manager API'
+            restApiName: 'Prodcut Manager API'
         })
 
         const authorizer = new CfnAuthorizer(this, 'cfnAuth', {
@@ -34,7 +34,7 @@ export class CloudApiGatewayConstruct extends Construct{
 
 
         // -----------------Lmada integration-----------------------
-        const userResource = restApi.root.addResource('users');
+        const userResource = restApi.root.addResource('product');
         userResource.addMethod('POST', new LambdaIntegration(lambdas.createUserLambda), authorizationParams);
         userResource.addMethod('GET', new LambdaIntegration(lambdas.getUsersLambda), authorizationParams);
     }

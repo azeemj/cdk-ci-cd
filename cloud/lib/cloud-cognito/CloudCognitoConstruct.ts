@@ -2,9 +2,9 @@ import {CfnOutput, Construct} from '@aws-cdk/core';
 import {CfnUserPoolResourceServer, OAuthScope, UserPool, UserPoolClient, UserPoolDomain} from "@aws-cdk/aws-cognito";
 
 export class CognitoConstruct extends Construct {
-    public static readonly USER_POOL_ID = 'UserManagerUserPool';
-    public static readonly USER_POOL_CLIENT_ID = 'user-manager-client';
-    public static readonly USER_POOL_DOMAIN_ID = 'user-manager-user-pool-domain';
+    public static readonly USER_POOL_ID = 'ProductManagerUserPool';
+    public static readonly USER_POOL_CLIENT_ID = 'product-manager-client';
+    public static readonly USER_POOL_DOMAIN_ID = 'product-manager-user-pool-domain';
     public static readonly USER_POOL_RESOURCE_SERVER_ID = 'https://resource-server.com';
     public readonly userPoolArn: string;
 
@@ -19,7 +19,7 @@ export class CognitoConstruct extends Construct {
             scopes: [
                 {
                     scopeDescription: "Perform client operations",
-                    scopeName: "user-manager-client",
+                    scopeName: "product-manager-client",
                 },
             ],
         });
@@ -31,14 +31,14 @@ export class CognitoConstruct extends Construct {
                 flows: {
                     clientCredentials: true
                 },
-                scopes: [OAuthScope.custom(`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/user-manager-client`)],
+                scopes: [OAuthScope.custom(`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/product-manager-client`)],
             },
         })
 
         const userPoolDomain = new UserPoolDomain(this, CognitoConstruct.USER_POOL_DOMAIN_ID, {
             userPool: cognitoUserPool,
             cognitoDomain: {
-                domainPrefix: 'user-manager-serverless'
+                domainPrefix: 'product-manager-serverless'
             }
         })
 
