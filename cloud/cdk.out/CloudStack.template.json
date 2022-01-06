@@ -1,0 +1,834 @@
+{
+  "Resources": {
+    "ProductManagerUserPoolB2DAF454": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "AccountRecoverySetting": {
+          "RecoveryMechanisms": [
+            {
+              "Name": "verified_phone_number",
+              "Priority": 1
+            },
+            {
+              "Name": "verified_email",
+              "Priority": 2
+            }
+          ]
+        },
+        "AdminCreateUserConfig": {
+          "AllowAdminCreateUserOnly": true
+        },
+        "EmailVerificationMessage": "The verification code to your new account is {####}",
+        "EmailVerificationSubject": "Verify your new account",
+        "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "VerificationMessageTemplate": {
+          "DefaultEmailOption": "CONFIRM_WITH_CODE",
+          "EmailMessage": "The verification code to your new account is {####}",
+          "EmailSubject": "Verify your new account",
+          "SmsMessage": "The verification code to your new account is {####}"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerUserPool/ProductManagerUserPool/Resource"
+      }
+    },
+    "ProductManagerUserPooldevuserpoolresourceserverC5FBE20C": {
+      "Type": "AWS::Cognito::UserPoolResourceServer",
+      "Properties": {
+        "Identifier": "https://resource-server.com",
+        "Name": "userpool-resource-server",
+        "UserPoolId": {
+          "Ref": "ProductManagerUserPoolB2DAF454"
+        },
+        "Scopes": [
+          {
+            "ScopeDescription": "Perform client operations",
+            "ScopeName": "product-manager-client"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerUserPool/dev-userpool-resource-server"
+      }
+    },
+    "ProductManagerUserPoolproductmanagerclientFB1D363C": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "ProductManagerUserPoolB2DAF454"
+        },
+        "AllowedOAuthFlows": [
+          "client_credentials"
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "AllowedOAuthScopes": [
+          "https://resource-server.com/product-manager-client"
+        ],
+        "GenerateSecret": true,
+        "SupportedIdentityProviders": [
+          "COGNITO"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerUserPool/product-manager-client/Resource"
+      }
+    },
+    "ProductManagerUserPoolproductmanageruserpooldomain87C25159": {
+      "Type": "AWS::Cognito::UserPoolDomain",
+      "Properties": {
+        "Domain": "product-manager-serverless",
+        "UserPoolId": {
+          "Ref": "ProductManagerUserPoolB2DAF454"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerUserPool/product-manager-user-pool-domain/Resource"
+      }
+    },
+    "Products229621C6": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "AWS::StackName"
+              },
+              "-Products"
+            ]
+          ]
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/Products/Resource"
+      }
+    },
+    "LamdaConstructLambdaNodeModulesLayer70F68203": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "Content": {
+          "S3Bucket": "cdk-hnb659fds-assets-853595480311-us-east-1",
+          "S3Key": "8c04a7ea35ef73b9e55b0f991de09a35135fc90338afb9d4b29a76e1ab437071.zip"
+        },
+        "CompatibleRuntimes": [
+          "nodejs12.x"
+        ],
+        "Description": "Node modules lambda layer"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/LambdaNodeModulesLayer/Resource",
+        "aws:asset:path": "asset.8c04a7ea35ef73b9e55b0f991de09a35135fc90338afb9d4b29a76e1ab437071",
+        "aws:asset:property": "Content"
+      }
+    },
+    "LamdaConstructCreateProductLambdarole534DB48C": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/CreateProductLambda_role/Resource"
+      }
+    },
+    "LamdaConstructCreateProductLambdaroleDefaultPolicy1DE39EBD": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Products229621C6",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "LamdaConstructCreateProductLambdaroleDefaultPolicy1DE39EBD",
+        "Roles": [
+          {
+            "Ref": "LamdaConstructCreateProductLambdarole534DB48C"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/CreateProductLambda_role/DefaultPolicy/Resource"
+      }
+    },
+    "LamdaConstructCreateProductLambda834E5954": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-853595480311-us-east-1",
+          "S3Key": "0f5307a5dd4e7059ffaca1d4fdfe2516b06d8d33380bad605724396cdef216e0.zip"
+        },
+        "Handler": "handlers/CreateProductHandler.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LamdaConstructCreateProductLambdarole534DB48C",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs12.x",
+        "Environment": {
+          "Variables": {
+            "USERS_TABLE": {
+              "Ref": "Products229621C6"
+            }
+          }
+        },
+        "Layers": [
+          {
+            "Ref": "LamdaConstructLambdaNodeModulesLayer70F68203"
+          }
+        ],
+        "MemorySize": 256,
+        "Timeout": 60,
+        "TracingConfig": {
+          "Mode": "Active"
+        }
+      },
+      "DependsOn": [
+        "LamdaConstructCreateProductLambdaroleDefaultPolicy1DE39EBD",
+        "LamdaConstructCreateProductLambdarole534DB48C"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/CreateProductLambda/Resource",
+        "aws:asset:path": "asset.0f5307a5dd4e7059ffaca1d4fdfe2516b06d8d33380bad605724396cdef216e0",
+        "aws:asset:property": "Code"
+      }
+    },
+    "LamdaConstructGetProductsLambdarole9DEC92D0": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/GetProductsLambda_role/Resource"
+      }
+    },
+    "LamdaConstructGetProductsLambdaroleDefaultPolicyE882EC7B": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Products229621C6",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "LamdaConstructGetProductsLambdaroleDefaultPolicyE882EC7B",
+        "Roles": [
+          {
+            "Ref": "LamdaConstructGetProductsLambdarole9DEC92D0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/GetProductsLambda_role/DefaultPolicy/Resource"
+      }
+    },
+    "LamdaConstructGetProductsLambdaFF1E0754": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-853595480311-us-east-1",
+          "S3Key": "0f5307a5dd4e7059ffaca1d4fdfe2516b06d8d33380bad605724396cdef216e0.zip"
+        },
+        "Handler": "handlers/GetProductsHandler.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LamdaConstructGetProductsLambdarole9DEC92D0",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs12.x",
+        "Environment": {
+          "Variables": {
+            "USERS_TABLE": {
+              "Ref": "Products229621C6"
+            }
+          }
+        },
+        "Layers": [
+          {
+            "Ref": "LamdaConstructLambdaNodeModulesLayer70F68203"
+          }
+        ],
+        "MemorySize": 256,
+        "Timeout": 60,
+        "TracingConfig": {
+          "Mode": "Active"
+        }
+      },
+      "DependsOn": [
+        "LamdaConstructGetProductsLambdaroleDefaultPolicyE882EC7B",
+        "LamdaConstructGetProductsLambdarole9DEC92D0"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/LamdaConstruct/GetProductsLambda/Resource",
+        "aws:asset:path": "asset.0f5307a5dd4e7059ffaca1d4fdfe2516b06d8d33380bad605724396cdef216e0",
+        "aws:asset:property": "Code"
+      }
+    },
+    "ProductManagerApiGateway25DF0ECE": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "Prodcut Manager API"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Resource"
+      }
+    },
+    "ProductManagerApiGatewayCloudWatchRole55357665": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/CloudWatchRole/Resource"
+      }
+    },
+    "ProductManagerApiGatewayAccount68854390": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ProductManagerApiGatewayCloudWatchRole55357665",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ProductManagerApiGateway25DF0ECE"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Account"
+      }
+    },
+    "ProductManagerApiGatewayDeployment254286DCb9b20d6adad91215dc9236c2686f70ba": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "ProductManagerApiGatewayproductGETB4455729",
+        "ProductManagerApiGatewayproductPOSTF4615CAE",
+        "ProductManagerApiGatewayproductAABDE4FB"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Deployment/Resource"
+      }
+    },
+    "ProductManagerApiGatewayDeploymentStageprodCA4BA262": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        },
+        "DeploymentId": {
+          "Ref": "ProductManagerApiGatewayDeployment254286DCb9b20d6adad91215dc9236c2686f70ba"
+        },
+        "StageName": "prod"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/DeploymentStage.prod/Resource"
+      }
+    },
+    "ProductManagerApiGatewayproductAABDE4FB": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ProductManagerApiGateway25DF0ECE",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "product",
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/Resource"
+      }
+    },
+    "ProductManagerApiGatewayproductPOSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproductE39B5C0A": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LamdaConstructCreateProductLambda834E5954",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:853595480311:",
+              {
+                "Ref": "ProductManagerApiGateway25DF0ECE"
+              },
+              "/",
+              {
+                "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
+              },
+              "/POST/product"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product"
+      }
+    },
+    "ProductManagerApiGatewayproductPOSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproductB473E2BB": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LamdaConstructCreateProductLambda834E5954",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:853595480311:",
+              {
+                "Ref": "ProductManagerApiGateway25DF0ECE"
+              },
+              "/test-invoke-stage/POST/product"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product"
+      }
+    },
+    "ProductManagerApiGatewayproductPOSTF4615CAE": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "ResourceId": {
+          "Ref": "ProductManagerApiGatewayproductAABDE4FB"
+        },
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        },
+        "AuthorizationScopes": [
+          "https://resource-server.com/product-manager-client"
+        ],
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ProductManagerApiGatewaycfnAuth1A8181D2"
+        },
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "LamdaConstructCreateProductLambda834E5954",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/Resource"
+      }
+    },
+    "ProductManagerApiGatewayproductGETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproductEC68B05C": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LamdaConstructGetProductsLambdaFF1E0754",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:853595480311:",
+              {
+                "Ref": "ProductManagerApiGateway25DF0ECE"
+              },
+              "/",
+              {
+                "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
+              },
+              "/GET/product"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product"
+      }
+    },
+    "ProductManagerApiGatewayproductGETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproduct3AEEA65F": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LamdaConstructGetProductsLambdaFF1E0754",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:853595480311:",
+              {
+                "Ref": "ProductManagerApiGateway25DF0ECE"
+              },
+              "/test-invoke-stage/GET/product"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product"
+      }
+    },
+    "ProductManagerApiGatewayproductGETB4455729": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "ProductManagerApiGatewayproductAABDE4FB"
+        },
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        },
+        "AuthorizationScopes": [
+          "https://resource-server.com/product-manager-client"
+        ],
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ProductManagerApiGatewaycfnAuth1A8181D2"
+        },
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "LamdaConstructGetProductsLambdaFF1E0754",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/Resource"
+      }
+    },
+    "ProductManagerApiGatewaycfnAuth1A8181D2": {
+      "Type": "AWS::ApiGateway::Authorizer",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ProductManagerApiGateway25DF0ECE"
+        },
+        "Type": "COGNITO_USER_POOLS",
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "UserManagerApiAuthorizer",
+        "ProviderARNs": [
+          {
+            "Fn::GetAtt": [
+              "ProductManagerUserPoolB2DAF454",
+              "Arn"
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/cfnAuth"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=2.3.0,@aws-cdk/assets=1.74.0,@aws-cdk/aws-apigateway=1.74.0,@aws-cdk/aws-applicationautoscaling=1.74.0,@aws-cdk/aws-autoscaling-common=1.74.0,@aws-cdk/aws-cloudwatch=1.74.0,@aws-cdk/aws-codeguruprofiler=1.74.0,@aws-cdk/aws-cognito=1.74.0,@aws-cdk/aws-dynamodb=1.74.0,@aws-cdk/aws-ec2=1.74.0,@aws-cdk/aws-events=1.74.0,@aws-cdk/aws-iam=1.74.0,@aws-cdk/aws-kms=1.74.0,@aws-cdk/aws-lambda=1.74.0,@aws-cdk/aws-logs=1.74.0,@aws-cdk/aws-s3=1.74.0,@aws-cdk/aws-s3-assets=1.74.0,@aws-cdk/aws-sqs=1.74.0,@aws-cdk/aws-ssm=1.74.0,@aws-cdk/cloud-assembly-schema=1.74.0,@aws-cdk/core=1.74.0,@aws-cdk/custom-resources=1.74.0,@aws-cdk/cx-api=1.74.0,@aws-cdk/region-info=1.74.0,jsii-runtime=node.js/v12.14.1"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CloudStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Outputs": {
+    "ProductManagerUserPoolUserPoolUrlBA4CCDD9": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ProductManagerUserPoolproductmanageruserpooldomain87C25159"
+            },
+            ".auth.us-east-1.amazoncognito.com"
+          ]
+        ]
+      },
+      "Export": {
+        "Name": "UserPoolUrl"
+      }
+    },
+    "ProductManagerApiGatewayEndpointC1182AEE": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ProductManagerApiGateway25DF0ECE"
+            },
+            ".execute-api.us-east-1.",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
+            },
+            "/"
+          ]
+        ]
+      }
+    }
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store."
+    }
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  {
+                    "Ref": "BootstrapVersion"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "CDK bootstrap stack version 4 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+        }
+      ]
+    }
+  }
+}
