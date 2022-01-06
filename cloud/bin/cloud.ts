@@ -2,9 +2,15 @@
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { CloudStack } from '../lib/cloud-stack';
-//import { DemoPipelineStack } from './../lib/pipeline-stack';
+// import { CloudStackStage } from '../lib/cloud-stack-stage';
 
 const app = new cdk.App();
+
+const PROD:string = 'DEV';
+
+//production
+if(PROD == 'PROD'){
+ // production
 new CloudStack(app, 'CloudStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
@@ -16,11 +22,37 @@ new CloudStack(app, 'CloudStack', {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  
+  env: { account: '853595480311', region: 'us-west-2'}
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
  });
+}
 
-// new stack for pipeline
-//pipeline stack
-//new DemoPipelineStack(app, 'DemoPipelineStack', {});
+// Staging deployment
+else if(PROD === 'Staging'){
+
+new CloudStack(app, 'CloudStack', {
+  env: { account: '853595480311', region: 'us-west-1' },
+
+});
+
+
+
+}else{
+// dev 
+new CloudStack(app, 'CloudStack', {
+  env: { account: '853595480311', region: 'us-east-1' },
+
+});
+
+}
+
+
+
+
+ 
+
+
+
+

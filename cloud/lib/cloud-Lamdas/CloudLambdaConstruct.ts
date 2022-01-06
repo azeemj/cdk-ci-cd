@@ -1,9 +1,9 @@
 import {Construct} from '@aws-cdk/core';
-import {CreateUserLambda} from './CreateUserLambda';
+import {CreateProductLambda} from './CreateProductLambda';
 import {IFunction} from "@aws-cdk/aws-lambda";
 import {Table} from "@aws-cdk/aws-dynamodb";
 import {NodeModulesLayer} from "./NodeModulesLayer";
-import {GetUsersLambda} from './GetUsersLambda';
+import {GetProductLambda} from './GetProductLambda';
 
 
 export class CloudLambdaConstruct extends Construct {
@@ -13,15 +13,15 @@ export class CloudLambdaConstruct extends Construct {
     public readonly createUserLambda: IFunction;
     public readonly getUsersLambda: IFunction;
 
-    constructor(scope:Construct, usersDynamoDbTable: Table){
+    constructor(scope:Construct, productsDynamoDbTable: Table){
         super(scope,CloudLambdaConstruct.ID);
         const nodeJSModulesLayer = new NodeModulesLayer(this);
 
-        this.createUserLambda = new CreateUserLambda(this,usersDynamoDbTable.tableName,nodeJSModulesLayer);
-        usersDynamoDbTable.grantWriteData(this.createUserLambda);
+        this.createUserLambda = new CreateProductLambda(this,productsDynamoDbTable.tableName,nodeJSModulesLayer);
+        productsDynamoDbTable.grantWriteData(this.createUserLambda);
 
-        this.getUsersLambda = new GetUsersLambda(this, usersDynamoDbTable.tableName, nodeJSModulesLayer);
-        usersDynamoDbTable.grantReadData(this.getUsersLambda);
+        this.getUsersLambda = new GetProductLambda(this, productsDynamoDbTable.tableName, nodeJSModulesLayer);
+        productsDynamoDbTable.grantReadData(this.getUsersLambda);
 
     }
 

@@ -1,9 +1,9 @@
 import {APIGatewayEvent} from 'aws-lambda';
 import {constants} from 'http2';
-import CloudUserManager from '../CloudUserManager';
+import CloudProductManager from '../CloudProductManager';
 
 export const handler = async (event: APIGatewayEvent) => {
-    const users = await CloudUserManager.getall();
+    const users = await CloudProductManager.getall();
     return {
         statusCode: constants.HTTP_STATUS_OK,
         body: JSON.stringify(users)
