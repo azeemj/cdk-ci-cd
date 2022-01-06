@@ -1,4 +1,4 @@
-name: AWS CDK Synth
+name: AWS CDK Staging Synth
 
 on:
   push:
