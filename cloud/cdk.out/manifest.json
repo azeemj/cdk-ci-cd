@@ -1,0 +1,898 @@
+{
+  "version": "7.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "CloudStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CloudStack.assets.json",
+        "requiresBootstrapStackVersion": 4
+      }
+    },
+    "CloudStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://853595480311/us-east-1",
+      "properties": {
+        "templateFile": "CloudStack.template.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::853595480311:role/cdk-hnb659fds-deploy-role-853595480311-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::853595480311:role/cdk-hnb659fds-cfn-exec-role-853595480311-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-853595480311-us-east-1/ac94b8788fa718c55903d86905a56f9e1449b3eeb66c4a151d69c5f11e4640b0",
+        "requiresBootstrapStackVersion": 4,
+        "additionalDependencies": [
+          "CloudStack.assets"
+        ]
+      },
+      "dependencies": [
+        "CloudStack.assets"
+      ],
+      "metadata": {
+        "/CloudStack/ProductManagerUserPool/ProductManagerUserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerUserPoolB2DAF454",
+            "trace": [
+              "new UserPool (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-cognito/lib/user-pool.ts:734:22)",
+              "new CognitoConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-cognito/CloudCognitoConstruct.ts:13:33)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:24:35)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerUserPool/dev-userpool-resource-server": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerUserPooldevuserpoolresourceserverC5FBE20C",
+            "trace": [
+              "new CognitoConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-cognito/CloudCognitoConstruct.ts:15:9)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:24:35)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerUserPool/product-manager-client/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerUserPoolproductmanagerclientFB1D363C",
+            "trace": [
+              "new UserPoolClient (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-cognito/lib/user-pool-client.ts:325:22)",
+              "new CognitoConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-cognito/CloudCognitoConstruct.ts:27:9)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:24:35)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerUserPool/product-manager-user-pool-domain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerUserPoolproductmanageruserpooldomain87C25159",
+            "trace": [
+              "new UserPoolDomain (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-cognito/lib/user-pool-domain.ts:117:22)",
+              "new CognitoConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-cognito/CloudCognitoConstruct.ts:38:32)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:24:35)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerUserPool/UserPoolUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerUserPoolUserPoolUrlBA4CCDD9",
+            "trace": [
+              "new CognitoConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-cognito/CloudCognitoConstruct.ts:47:9)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:24:35)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/Products": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "Products229621C6"
+            },
+            "trace": [
+              "ConstructNode.addMetadata (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/construct-compat.ts:431:92)",
+              "new Table (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:1085:38)",
+              "new productsDynamoDbTable (/var/www/cloudComputing/iit2/cloud/lib/cloud-Dynamodb/productsDynamoDbTable.ts:10:9)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:25:34)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/Products/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Products229621C6",
+            "trace": [
+              "new Table (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:1058:18)",
+              "new productsDynamoDbTable (/var/www/cloudComputing/iit2/cloud/lib/cloud-Dynamodb/productsDynamoDbTable.ts:10:9)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:25:34)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/LambdaNodeModulesLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructLambdaNodeModulesLayer70F68203",
+            "trace": [
+              "new LayerVersion (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/layers.ts:189:39)",
+              "new NodeModulesLayer (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/NodeModulesLayer.ts:9:9)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:18:36)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/CreateProductLambda_role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructCreateProductLambdarole534DB48C",
+            "trace": [
+              "new Role (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new CreateProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CreateProductLambda.ts:16:19)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:20:33)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/CreateProductLambda_role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructCreateProductLambdaroleDefaultPolicy1DE39EBD",
+            "trace": [
+              "new Policy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "CreateProductLambda.addToRolePolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:252:15)",
+              "CreateProductLambda.buildTracingConfig (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:912:10)",
+              "new Function (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:611:27)",
+              "new CreateProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CreateProductLambda.ts:11:9)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:20:33)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/CreateProductLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructCreateProductLambda834E5954",
+            "trace": [
+              "new Function (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:593:35)",
+              "new CreateProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CreateProductLambda.ts:11:9)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:20:33)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/GetProductsLambda_role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructGetProductsLambdarole9DEC92D0",
+            "trace": [
+              "new Role (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "new GetProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/GetProductLambda.ts:16:19)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:23:31)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/GetProductsLambda_role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructGetProductsLambdaroleDefaultPolicyE882EC7B",
+            "trace": [
+              "new Policy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:368:28)",
+              "Role.addToPolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:376:17)",
+              "GetProductLambda.addToRolePolicy (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:252:15)",
+              "GetProductLambda.buildTracingConfig (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:912:10)",
+              "new Function (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:611:27)",
+              "new GetProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/GetProductLambda.ts:11:9)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:23:31)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/LamdaConstruct/GetProductsLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LamdaConstructGetProductsLambdaFF1E0754",
+            "trace": [
+              "new Function (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function.ts:593:35)",
+              "new GetProductLambda (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/GetProductLambda.ts:11:9)",
+              "new CloudLambdaConstruct (/var/www/cloudComputing/iit2/cloud/lib/cloud-Lamdas/CloudLambdaConstruct.ts:23:31)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:26:29)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGateway25DF0ECE",
+            "trace": [
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:683:22)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayCloudWatchRole55357665",
+            "trace": [
+              "new Role (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-iam/lib/role.ts:327:18)",
+              "RestApi.configureCloudWatchRole (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:490:18)",
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:700:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayAccount68854390",
+            "trace": [
+              "RestApi.configureCloudWatchRole (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:495:22)",
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:700:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayDeployment254286DCb9b20d6adad91215dc9236c2686f70ba",
+            "trace": [
+              "new Deployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/deployment.ts:71:21)",
+              "RestApi.configureDeployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:506:32)",
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:703:10)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayDeploymentStageprodCA4BA262",
+            "trace": [
+              "new Stage (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/stage.ts:240:22)",
+              "RestApi.configureDeployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:516:30)",
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:703:10)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayEndpointC1182AEE",
+            "trace": [
+              "RestApi.configureDeployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:521:7)",
+              "new RestApi (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:703:10)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:13:25)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductAABDE4FB",
+            "trace": [
+              "new Resource (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:402:22)",
+              "RootResource.addResource (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:183:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:37:43)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductPOSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproductE39B5C0A",
+            "trace": [
+              "CreateProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
+              "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:61:18)",
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:38:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductPOSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproductB473E2BB",
+            "trace": [
+              "CreateProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
+              "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:69:20)",
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:38:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductPOSTF4615CAE",
+            "trace": [
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:215:22)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:38:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductGETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproductEC68B05C",
+            "trace": [
+              "GetProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
+              "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:61:18)",
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:39:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductGETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproduct3AEEA65F",
+            "trace": [
+              "GetProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
+              "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:69:20)",
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:197:36)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:39:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewayproductGETB4455729",
+            "trace": [
+              "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:215:22)",
+              "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:39:22)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/ProductManagerApiGateway/cfnAuth": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductManagerApiGatewaycfnAuth1A8181D2",
+            "trace": [
+              "new CloudApiGatewayConstruct (/var/www/cloudComputing/iit2/cloud/lib/CloudApiGateway/CloudApiGatewayConstruct.ts:17:28)",
+              "new CloudStack (/var/www/cloudComputing/iit2/cloud/lib/cloud-stack.ts:27:5)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/bin/cloud.ts:44:1)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Module.m._compile (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Object.require.extensions.<computed> [as .ts] (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "main (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (internal/modules/cjs/loader.js:955:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:991:10)",
+              "Module.load (internal/modules/cjs/loader.js:811:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:723:14)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)",
+              "/usr/local/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/CloudStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:51:24)",
+              "/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:200:5)",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:196:5)",
+              "injectMetadataResources (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+              "Object.synthesize (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (events.js:313:26)",
+              "process.emit (events.js:223:5)",
+              "process.EventEmitter.emit (domain.js:475:20)",
+              "process.emit (/var/www/cloudComputing/iit2/cloud/node_modules/source-map-support/source-map-support.js:516:21)",
+              "process.topLevelDomainCallback (domain.js:130:23)"
+            ]
+          }
+        ],
+        "/CloudStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:506:17)",
+              "DefaultStackSynthesizer.synthesize (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:336:7)",
+              "/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:29",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:200:5)",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:196:5)",
+              "synthesizeTree (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:150:3)",
+              "Object.synthesize (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:39:3)",
+              "App.synth (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (events.js:313:26)",
+              "process.emit (events.js:223:5)",
+              "process.EventEmitter.emit (domain.js:475:20)",
+              "process.emit (/var/www/cloudComputing/iit2/cloud/node_modules/source-map-support/source-map-support.js:516:21)",
+              "process.topLevelDomainCallback (domain.js:130:23)"
+            ]
+          }
+        ],
+        "/CloudStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:516:3)",
+              "DefaultStackSynthesizer.synthesize (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:336:7)",
+              "/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:29",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:200:5)",
+              "visit (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:196:5)",
+              "synthesizeTree (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:150:3)",
+              "Object.synthesize (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/private/synthesis.ts:39:3)",
+              "App.synth (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (events.js:313:26)",
+              "process.emit (events.js:223:5)",
+              "process.EventEmitter.emit (domain.js:475:20)",
+              "process.emit (/var/www/cloudComputing/iit2/cloud/node_modules/source-map-support/source-map-support.js:516:21)",
+              "process.topLevelDomainCallback (domain.js:130:23)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
