@@ -6,9 +6,10 @@ import { CloudStack } from '../lib/cloud-stack';
 
 const app = new cdk.App();
 
-const stage = false;
+const PROD:string = 'DEV';
 
-if(stage){
+//production
+if(PROD == 'PROD'){
  // production
 new CloudStack(app, 'CloudStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
@@ -28,10 +29,9 @@ new CloudStack(app, 'CloudStack', {
  });
 }
 
+// Staging deployment
+else if(PROD === 'Staging'){
 
-if(!stage){
-
-// dev 
 new CloudStack(app, 'CloudStack', {
   env: { account: '853595480311', region: 'us-west-1' },
 
@@ -39,7 +39,17 @@ new CloudStack(app, 'CloudStack', {
 
 
 
+}else{
+// dev 
+new CloudStack(app, 'CloudStack', {
+  env: { account: '853595480311', region: 'us-east-1' },
+
+});
+
 }
+
+
+
 
  
 

@@ -5,6 +5,8 @@ import {ProductInputData} from "../models/ProductInputData";
 import CloudProductManager from '../CloudProductManager';
 
 export const handler = async (event: APIGatewayEvent) => {
+    console.log("EVENT: \n" + JSON.stringify(event, null, 2))
+    console.log('event.body', event.body);
     const userInputDto = JSONParse<ProductInputData>(event.body);
     const createdUser = await CloudProductManager.create(userInputDto)
     return {
