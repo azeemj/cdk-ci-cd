@@ -46,7 +46,7 @@ export class CognitoConstruct extends Construct {
 
         new CfnOutput(this, 'UserPoolUrl', {
             exportName: `UserPoolUrl`,
-            value: `https://${userPoolDomain.domainName}.auth.us-east-2.amazoncognito.com`
+            value: `https://${userPoolDomain.domainName}.auth.us-east-1.amazoncognito.com`
         });
     }
 }

@@ -27,7 +27,7 @@ export class CloudApiGatewayConstruct extends Construct{
             authorizer: {
                 authorizerId: authorizer.ref
             },
-            authorizationScopes: [`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/user-manager-client`]
+            authorizationScopes: [`${CognitoConstruct.USER_POOL_RESOURCE_SERVER_ID}/product-manager-client`]
         };
 
 

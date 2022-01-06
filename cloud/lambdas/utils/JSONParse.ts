@@ -1,4 +1,5 @@
 export const JSONParse = <A>(str: string | null): A => {
+    console.log('JSONParse', str);
     if (str && str !== '') {
         try {
             return JSON.parse(str) as A;
