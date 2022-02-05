@@ -11,6 +11,7 @@ const PROD:string = 'DEV';
 //production
 if(PROD == 'PROD'){
  // production
+console.log('Environment, make sure cognito region', PROD);
 new CloudStack(app, 'CloudStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
@@ -31,7 +32,7 @@ new CloudStack(app, 'CloudStack', {
 
 // Staging deployment
 else if(PROD === 'Staging'){
-
+console.log('Environment, make sure cognito region', PROD);
 new CloudStack(app, 'CloudStack', {
   env: { account: '853595480311', region: 'us-west-1' },
 
@@ -41,6 +42,7 @@ new CloudStack(app, 'CloudStack', {
 
 }else{
 // dev 
+console.log('Environment, make sure cognito region', PROD);
 new CloudStack(app, 'CloudStack', {
   env: { account: '853595480311', region: 'us-east-1' },
 

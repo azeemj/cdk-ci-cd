@@ -21,7 +21,7 @@
         "templateFile": "CloudStack.template.json",
         "assumeRoleArn": "arn:${AWS::Partition}:iam::853595480311:role/cdk-hnb659fds-deploy-role-853595480311-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::853595480311:role/cdk-hnb659fds-cfn-exec-role-853595480311-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-853595480311-us-east-1/ac94b8788fa718c55903d86905a56f9e1449b3eeb66c4a151d69c5f11e4640b0",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-853595480311-us-east-1/863ae9ce6bb31457103296d3cfd0f2e0793d114d15848ac35dcab8f2f5733ebf",
         "requiresBootstrapStackVersion": 4,
         "additionalDependencies": [
           "CloudStack.assets"
@@ -514,7 +514,7 @@
         "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayDeployment254286DCb9b20d6adad91215dc9236c2686f70ba",
+            "data": "ProductManagerApiGatewayDeployment254286DCf9b0b06855a71f9e79de1cef72219ae6",
             "trace": [
               "new Deployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/deployment.ts:71:21)",
               "RestApi.configureDeployment (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:506:32)",
@@ -597,10 +597,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/Resource": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductAABDE4FB",
+            "data": "ProductManagerApiGatewayproducttestF9566CB9",
             "trace": [
               "new Resource (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:402:22)",
               "RootResource.addResource (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:183:12)",
@@ -625,10 +625,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductPOSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproductE39B5C0A",
+            "data": "ProductManagerApiGatewayproducttestPOSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproducttest17C58406",
             "trace": [
               "CreateProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
               "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:61:18)",
@@ -655,10 +655,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductPOSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproductB473E2BB",
+            "data": "ProductManagerApiGatewayproducttestPOSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproducttest7A9D87A6",
             "trace": [
               "CreateProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
               "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:69:20)",
@@ -685,10 +685,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/POST/Resource": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductPOSTF4615CAE",
+            "data": "ProductManagerApiGatewayproducttestPOST00471E20",
             "trace": [
               "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:215:22)",
               "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
@@ -713,10 +713,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductGETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproductEC68B05C",
+            "data": "ProductManagerApiGatewayproducttestGETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproducttest99ECC0A3",
             "trace": [
               "GetProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
               "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:61:18)",
@@ -743,10 +743,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductGETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproduct3AEEA65F",
+            "data": "ProductManagerApiGatewayproducttestGETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproducttestAA294051",
             "trace": [
               "GetProductLambda.addPermission (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:234:5)",
               "LambdaIntegration.bind (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:69:20)",
@@ -773,10 +773,10 @@
             ]
           }
         ],
-        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product/GET/Resource": [
+        "/CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ProductManagerApiGatewayproductGETB4455729",
+            "data": "ProductManagerApiGatewayproducttestGETB37CC766",
             "trace": [
               "new Method (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:215:22)",
               "Resource.addMethod (/var/www/cloudComputing/iit2/cloud/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:187:12)",
