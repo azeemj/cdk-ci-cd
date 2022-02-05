@@ -34,7 +34,7 @@ export class CloudApiGatewayConstruct extends Construct{
 
 
         // -----------------Lmada integration-----------------------
-        const userResource = restApi.root.addResource('product-test');
+        const userResource = restApi.root.addResource('product-test2');
         userResource.addMethod('POST', new LambdaIntegration(lambdas.createUserLambda), authorizationParams);
         userResource.addMethod('GET', new LambdaIntegration(lambdas.getUsersLambda), authorizationParams);
     }
