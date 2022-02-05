@@ -633,7 +633,7 @@
                               "Ref": "ProductManagerApiGateway25DF0ECE"
                             },
                             "deploymentId": {
-                              "Ref": "ProductManagerApiGatewayDeployment254286DCf9b0b06855a71f9e79de1cef72219ae6"
+                              "Ref": "ProductManagerApiGatewayDeployment254286DC62846dbeead484d8e731b33c884d44ba"
                             },
                             "stageName": "prod"
                           }
@@ -649,13 +649,13 @@
                     "id": "Default",
                     "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default",
                     "children": {
-                      "product-test": {
-                        "id": "product-test",
-                        "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test",
+                      "product-test2": {
+                        "id": "product-test2",
+                        "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/Resource",
+                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                               "aws:cdk:cloudformation:props": {
@@ -665,7 +665,7 @@
                                     "RootResourceId"
                                   ]
                                 },
-                                "pathPart": "product-test",
+                                "pathPart": "product-test2",
                                 "restApiId": {
                                   "Ref": "ProductManagerApiGateway25DF0ECE"
                                 }
@@ -674,11 +674,11 @@
                           },
                           "POST": {
                             "id": "POST",
-                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST",
+                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST",
                             "children": {
-                              "ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test": {
-                                "id": "ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test",
+                              "ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test2": {
+                                "id": "ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test2",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test2",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -706,16 +706,16 @@
                                           {
                                             "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
                                           },
-                                          "/POST/product-test"
+                                          "/POST/product-test2"
                                         ]
                                       ]
                                     }
                                   }
                                 }
                               },
-                              "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test": {
-                                "id": "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test",
+                              "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test2": {
+                                "id": "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test2",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test2",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -739,7 +739,7 @@
                                           {
                                             "Ref": "ProductManagerApiGateway25DF0ECE"
                                           },
-                                          "/test-invoke-stage/POST/product-test"
+                                          "/test-invoke-stage/POST/product-test2"
                                         ]
                                       ]
                                     }
@@ -748,13 +748,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/Resource",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "POST",
                                     "resourceId": {
-                                      "Ref": "ProductManagerApiGatewayproducttestF9566CB9"
+                                      "Ref": "ProductManagerApiGatewayproducttest2F933BAC7"
                                     },
                                     "restApiId": {
                                       "Ref": "ProductManagerApiGateway25DF0ECE"
@@ -796,11 +796,11 @@
                           },
                           "GET": {
                             "id": "GET",
-                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET",
+                            "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET",
                             "children": {
-                              "ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test": {
-                                "id": "ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test",
+                              "ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test2": {
+                                "id": "ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test2",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test2",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -828,16 +828,16 @@
                                           {
                                             "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
                                           },
-                                          "/GET/product-test"
+                                          "/GET/product-test2"
                                         ]
                                       ]
                                     }
                                   }
                                 }
                               },
-                              "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test": {
-                                "id": "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test",
+                              "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test2": {
+                                "id": "ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test2",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test2",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                                   "aws:cdk:cloudformation:props": {
@@ -861,7 +861,7 @@
                                           {
                                             "Ref": "ProductManagerApiGateway25DF0ECE"
                                           },
-                                          "/test-invoke-stage/GET/product-test"
+                                          "/test-invoke-stage/GET/product-test2"
                                         ]
                                       ]
                                     }
@@ -870,13 +870,13 @@
                               },
                               "Resource": {
                                 "id": "Resource",
-                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/Resource",
+                                "path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                                   "aws:cdk:cloudformation:props": {
                                     "httpMethod": "GET",
                                     "resourceId": {
-                                      "Ref": "ProductManagerApiGatewayproducttestF9566CB9"
+                                      "Ref": "ProductManagerApiGatewayproducttest2F933BAC7"
                                     },
                                     "restApiId": {
                                       "Ref": "ProductManagerApiGateway25DF0ECE"

@@ -450,7 +450,7 @@
         "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Account"
       }
     },
-    "ProductManagerApiGatewayDeployment254286DCf9b0b06855a71f9e79de1cef72219ae6": {
+    "ProductManagerApiGatewayDeployment254286DC62846dbeead484d8e731b33c884d44ba": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -459,9 +459,9 @@
         "Description": "Automatically created by the RestApi construct"
       },
       "DependsOn": [
-        "ProductManagerApiGatewayproducttestGETB37CC766",
-        "ProductManagerApiGatewayproducttestPOST00471E20",
-        "ProductManagerApiGatewayproducttestF9566CB9"
+        "ProductManagerApiGatewayproducttest2GET4CBE17A5",
+        "ProductManagerApiGatewayproducttest2POSTF137DB9C",
+        "ProductManagerApiGatewayproducttest2F933BAC7"
       ],
       "Metadata": {
         "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Deployment/Resource"
@@ -474,7 +474,7 @@
           "Ref": "ProductManagerApiGateway25DF0ECE"
         },
         "DeploymentId": {
-          "Ref": "ProductManagerApiGatewayDeployment254286DCf9b0b06855a71f9e79de1cef72219ae6"
+          "Ref": "ProductManagerApiGatewayDeployment254286DC62846dbeead484d8e731b33c884d44ba"
         },
         "StageName": "prod"
       },
@@ -482,7 +482,7 @@
         "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/DeploymentStage.prod/Resource"
       }
     },
-    "ProductManagerApiGatewayproducttestF9566CB9": {
+    "ProductManagerApiGatewayproducttest2F933BAC7": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -491,16 +491,16 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "product-test",
+        "PathPart": "product-test2",
         "RestApiId": {
           "Ref": "ProductManagerApiGateway25DF0ECE"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/Resource"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/Resource"
       }
     },
-    "ProductManagerApiGatewayproducttestPOSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproducttest17C58406": {
+    "ProductManagerApiGatewayproducttest2POSTApiPermissionCloudStackProductManagerApiGatewayB4251646POSTproducttest21205E52A": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -527,16 +527,16 @@
               {
                 "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
               },
-              "/POST/product-test"
+              "/POST/product-test2"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/ApiPermission.CloudStackProductManagerApiGatewayB4251646.POST..product-test2"
       }
     },
-    "ProductManagerApiGatewayproducttestPOSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproducttest7A9D87A6": {
+    "ProductManagerApiGatewayproducttest2POSTApiPermissionTestCloudStackProductManagerApiGatewayB4251646POSTproducttest28E4F15D8": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -559,21 +559,21 @@
               {
                 "Ref": "ProductManagerApiGateway25DF0ECE"
               },
-              "/test-invoke-stage/POST/product-test"
+              "/test-invoke-stage/POST/product-test2"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.POST..product-test2"
       }
     },
-    "ProductManagerApiGatewayproducttestPOST00471E20": {
+    "ProductManagerApiGatewayproducttest2POSTF137DB9C": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "ResourceId": {
-          "Ref": "ProductManagerApiGatewayproducttestF9566CB9"
+          "Ref": "ProductManagerApiGatewayproducttest2F933BAC7"
         },
         "RestApiId": {
           "Ref": "ProductManagerApiGateway25DF0ECE"
@@ -610,10 +610,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/POST/Resource"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/POST/Resource"
       }
     },
-    "ProductManagerApiGatewayproducttestGETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproducttest99ECC0A3": {
+    "ProductManagerApiGatewayproducttest2GETApiPermissionCloudStackProductManagerApiGatewayB4251646GETproducttest24100678C": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -640,16 +640,16 @@
               {
                 "Ref": "ProductManagerApiGatewayDeploymentStageprodCA4BA262"
               },
-              "/GET/product-test"
+              "/GET/product-test2"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/ApiPermission.CloudStackProductManagerApiGatewayB4251646.GET..product-test2"
       }
     },
-    "ProductManagerApiGatewayproducttestGETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproducttestAA294051": {
+    "ProductManagerApiGatewayproducttest2GETApiPermissionTestCloudStackProductManagerApiGatewayB4251646GETproducttest2855A86D1": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -672,21 +672,21 @@
               {
                 "Ref": "ProductManagerApiGateway25DF0ECE"
               },
-              "/test-invoke-stage/GET/product-test"
+              "/test-invoke-stage/GET/product-test2"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/ApiPermission.Test.CloudStackProductManagerApiGatewayB4251646.GET..product-test2"
       }
     },
-    "ProductManagerApiGatewayproducttestGETB37CC766": {
+    "ProductManagerApiGatewayproducttest2GET4CBE17A5": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "ResourceId": {
-          "Ref": "ProductManagerApiGatewayproducttestF9566CB9"
+          "Ref": "ProductManagerApiGatewayproducttest2F933BAC7"
         },
         "RestApiId": {
           "Ref": "ProductManagerApiGateway25DF0ECE"
@@ -723,7 +723,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test/GET/Resource"
+        "aws:cdk:path": "CloudStack/ProductManagerApiGateway/ProductManagerApiGateway/Default/product-test2/GET/Resource"
       }
     },
     "ProductManagerApiGatewaycfnAuth1A8181D2": {

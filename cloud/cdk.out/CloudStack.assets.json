@@ -29,7 +29,7 @@
         }
       }
     },
-    "863ae9ce6bb31457103296d3cfd0f2e0793d114d15848ac35dcab8f2f5733ebf": {
+    "e7cc8abbf61a7f54c91a34fddc69826b98c6155acdde6ef978ea15b25cb536d7": {
       "source": {
         "path": "CloudStack.template.json",
         "packaging": "file"
@@ -37,7 +37,7 @@
       "destinations": {
         "853595480311-us-east-1": {
           "bucketName": "cdk-hnb659fds-assets-853595480311-us-east-1",
-          "objectKey": "863ae9ce6bb31457103296d3cfd0f2e0793d114d15848ac35dcab8f2f5733ebf",
+          "objectKey": "e7cc8abbf61a7f54c91a34fddc69826b98c6155acdde6ef978ea15b25cb536d7",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::853595480311:role/cdk-hnb659fds-file-publishing-role-853595480311-us-east-1"
         }
